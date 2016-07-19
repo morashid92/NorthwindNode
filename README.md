@@ -17,12 +17,22 @@ Before you begin we recommend you read about the basic building blocks that asse
 Make sure you have installed all these prerequisites on your development machine.
 * Node.js - [Download & Install Node.js](http://www.nodejs.org/download/) and the npm package manager, if you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
 * MongoDB - [Download & Install MongoDB](http://www.mongodb.org/downloads), and make sure it's running on the default port (27017).
-* Bower - You're going to use the [Bower Package Manager](http://bower.io/) to manage your front-end packages, in order to install it make sure you've installed Node.js and npm, then install bower globally using npm:
+* Bower - You're going to use the [Bower Package Manager](http://bower.io/) to manage your front-end packages, in order to install it make sure you've installed Node.js and npm, then install bower globally using npm.:
 
 ```
 $ npm install -g bower
 ```
+If you run into any bower errors it could be possible that it has to do with permissions. The following helped for me:
 
+```
+
+$ which bower
+>> /usr/local/bin/bower
+
+sudo chown -R $USER:$GROUP ~/.npm
+sudo chown -R $USER:$GROUP ~/.config
+
+```
 * Grunt - You're going to use the [Grunt Task Runner](http://gruntjs.com/) to automate your development process, in order to install it make sure you've installed Node.js and npm, then install grunt globally using npm:
 
 ```
@@ -53,6 +63,15 @@ Don't forget to rename **mean-master** after your project name.
 Once you've downloaded the boilerplate and installed all the prerequisites, you're just a few steps away from starting to develop you MEAN application.
 
 The first thing you should do is install the Node.js dependencies. The boilerplate comes pre-bundled with a package.json file that contains the list of modules you need to start your application, to learn more about the modules installed visit the NPM & Package.json section.
+
+## Note
+Sometimes when using npm you may have to clear cache, especially if you experimented a thousand times like me. If you ever come accross any caching errors cleare the cache before you use npm.
+
+```
+rm -rf node_modules && npm cache clean && npm install
+
+```
+
 
 To install Node.js dependencies you're going to use npm again, in the application folder run this in the command-line:
 
